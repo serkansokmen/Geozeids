@@ -7,31 +7,29 @@ void ofApp::setup(){
     ofSetCircleResolution(100);
     ofBackground(0);
     
+    box2d.init();
+    box2d.setGravity(0, 0);
+    box2d.setFPS(60);
+    box2d.createBounds();
+    box2d.registerGrabbing();
+    box2d.setIterations(1, 1);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    int delIndex = 0;
+    box2d.update();
     for (auto ripple : ripples) {
-        if (ripple.get()->isAlive()) {
-            ripple.get()->update();
-        } else {
-            ripples.erase(ripples.begin() + delIndex);
-        }
-        delIndex ++;
+        ripple.get()->update();
     }
-    
-    ofLog() << ripples.size() << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
+    ofBackground(0);
     for (auto ripple : ripples) {
         ripple.get()->draw();
     }
-    
 }
 
 //--------------------------------------------------------------
@@ -41,32 +39,35 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    
-    ofPtr<Ripple> newRipple = ofPtr<Ripple>(new Ripple());
-    newRipple.get()->setup(touch.id, ofColor(ofRandom(255), ofRandom(255), ofRandom(255)));
-    
-    bool bExists = false;
+    bool bMayAdd = true;
     for (auto ripple : ripples) {
-        if (ripple.get()->getTouchId() == touch.id) {
-            bExists = true;
-        }
+        ofRectangle bounding(ripple.get()->getPosition(),
+                             ripple.get()->getRadius(),
+                             ripple.get()->getRadius());
+        bMayAdd = !bounding.inside(touch);
     }
-    if (!bExists) ripples.push_back(newRipple);
+    if (bMayAdd) {
+        ofPtr<Ripple> ripple(new Ripple());
+        ripple.get()->setPhysics(initialMass, bounciness, friction);
+        ripple.get()->setup(box2d.getWorld(), touch, 100);
+        ripple.get()->touchId = touch.id;
+        ripple.get()->color = ofColor(ofRandom(255),
+                                      ofRandom(255),
+                                      ofRandom(255));
+        ripples.push_back(ripple);
+    }
+    
+    ofLog() << touch.pressure << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
-    
-    for (auto ripple : ripples) {
-        if (ripple.get()->getTouchId() == touch.id) {
-            ripple.get()->addPoint(touch);
-        }
-    }
+    ofLog() << touch.pressure << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
-    
+    ofLog() << touch.pressure << endl;
 }
 
 //--------------------------------------------------------------

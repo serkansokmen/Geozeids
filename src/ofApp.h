@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxiOS.h"
+#include "ofxBox2d.h"
 
 
 #define     TOUCH_POINT_COUNT   5
@@ -10,68 +11,33 @@
 
 
 
-class Ripple {
+class Ripple : public ofxBox2dCircle {
     
-    ofVec2f                     center;
-    ofColor                     color;
-    
-    int                         touchId;
-    bool                        bIsAlive;
-    vector< ofPtr<ofVec2f> >    points;
+    vector<ofVec2f> prevPositions;
     
 public:
     
-    void setup(const int & touchId, const ofColor &color){
-        
-        this->touchId = touchId;
-        this->color = ofColor(color);
-        this->bIsAlive = true;
-    };
-    
     void update(){
-        
-        if (points.size() > MAX_POINT_LENGTH) {
-            points.erase(points.begin());
-        } else {
-            if (points.size() > 0) {
-                center = *points.back().get();
-                addPoint(center);
-            }
+        prevPositions.push_back(getPosition());
+        if (prevPositions.size() > MAX_POINT_LENGTH) {
+            prevPositions.erase(prevPositions.begin());
         }
     };
     
     void draw(){
         
-        if (bIsAlive) {
+        int count = prevPositions.size();
+        for (int i = 0; i < count; i++) {
+            float alpha = ofNormalize(i, 0.f, count) * 255.f;
+            float radius = ofMap(i, 0, count, 0, getRadius());
             ofNoFill();
-            ofSetColor(color);
-            for (int j=0; j<points.size(); j++) {
-                
-                float norm = ofNormalize(j, 0.f, (float)points.size());
-                float alpha = norm * 255.f;
-                float radius = points.size() / norm;
-                
-                ofSetColor(color, alpha);
-                ofCircle(points[j].get()->x, points[j].get()->y, radius);
-            }
+            ofSetColor(color, alpha);
+            ofCircle(prevPositions[i], radius);
         }
     };
     
-    const int & getTouchId(){
-        return this->touchId;
-    };
-    
-    const bool & isAlive() {
-        return this->bIsAlive;
-    };
-    
-    void addPoint(const ofVec2f &pos) {
-        this->points.push_back(ofPtr<ofVec2f>(new ofVec2f(pos)));
-    };
-    
-    void kill(){
-        this->bIsAlive = false;
-    };
+    ofColor color;
+    int     touchId;
 };
 
 
@@ -95,6 +61,13 @@ public:
     void gotFocus();
     void gotMemoryWarning();
     void deviceOrientationChanged(int newOrientation);
+    
+    
+    // Box2d
+    ofxBox2d        box2d;
+    float           initialMass = 20.0f;
+    float           friction = .8f;
+    float           bounciness = 0.5f;
     
     vector< ofPtr<Ripple> > ripples;
 };
