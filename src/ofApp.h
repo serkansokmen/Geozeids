@@ -3,11 +3,12 @@
 #include "ofMain.h"
 #include "ofxiOS.h"
 #include "ofxBox2d.h"
+#include "ofxCoreMotion.h"
 
 
 #define     TOUCH_POINT_COUNT   5
 #define     MAX_POINT_LENGTH    100
-
+#define     REPEAT_RES          4
 
 
 
@@ -27,7 +28,7 @@ public:
     void draw(){
         
         int count = prevPositions.size();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i+= REPEAT_RES) {
             float alpha = ofNormalize(i, 0.f, count) * 255.f;
             float radius = ofMap(i, 0, count, 0, getRadius());
             ofNoFill();
@@ -68,6 +69,11 @@ public:
     float           initialMass = 20.0f;
     float           friction = .8f;
     float           bounciness = 0.5f;
+    
+    ofxCoreMotion   coreMotion;
+    
+    ofVec2f         touchStart;
+    ofVec2f         touchEnd;
     
     vector< ofPtr<Ripple> > ripples;
 };

@@ -7,6 +7,8 @@ void ofApp::setup(){
     ofSetCircleResolution(100);
     ofBackground(0);
     
+    coreMotion.setupAttitude(CMAttitudeReferenceFrameXMagneticNorthZVertical);
+    
     box2d.init();
     box2d.setGravity(0, 0);
     box2d.setFPS(60);
@@ -18,6 +20,10 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    coreMotion.update();
+    ofVec2f gravity = ofVec2f(coreMotion.getGravity().x, -coreMotion.getGravity().y);
+    gravity *= 10;
+    //box2d.setGravity(gravity);
     box2d.update();
     for (auto ripple : ripples) {
         ripple.get()->update();
@@ -26,7 +32,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(0);
+    ofBackground(255);
     for (auto ripple : ripples) {
         ripple.get()->draw();
     }
@@ -39,35 +45,44 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    bool bMayAdd = true;
-    for (auto ripple : ripples) {
-        ofRectangle bounding(ripple.get()->getPosition(),
-                             ripple.get()->getRadius(),
-                             ripple.get()->getRadius());
-        bMayAdd = !bounding.inside(touch);
-    }
-    if (bMayAdd) {
-        ofPtr<Ripple> ripple(new Ripple());
-        ripple.get()->setPhysics(initialMass, bounciness, friction);
-        ripple.get()->setup(box2d.getWorld(), touch, 100);
-        ripple.get()->touchId = touch.id;
-        ripple.get()->color = ofColor(ofRandom(255),
-                                      ofRandom(255),
-                                      ofRandom(255));
-        ripples.push_back(ripple);
-    }
     
-    ofLog() << touch.pressure << endl;
+    touchStart.set(touch);
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
-    ofLog() << touch.pressure << endl;
+
+    touchEnd.set(touch);
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
-    ofLog() << touch.pressure << endl;
+    
+    touchEnd.set(touch);
+    
+    float radius = touchEnd.distance(touchStart) / 10.f;
+    
+    ofRectangle touchBounds(touch.x - radius/2,
+                            touch.y - radius/2,
+                            touch.x + radius/2,
+                            touch.y + radius/2);
+    bool bAddNew = true;
+    for (auto ripple : ripples) {
+        if (touchBounds.inside(ripple.get()->getPosition())) {
+            bAddNew = false;
+            return;
+        }
+    }
+    
+    if (bAddNew) {
+        ofPtr<Ripple> ripple(new Ripple());
+        ripple.get()->setPhysics(initialMass, bounciness, friction);
+        ripple.get()->setup(box2d.getWorld(), touchStart, radius);
+        ripple.get()->addForce(touchEnd, radius * 10.f);
+        ripple.get()->touchId = touch.id;
+        ripple.get()->color = ofColor(ofRandom(100, 200));
+        ripples.push_back(ripple);
+    }
 }
 
 //--------------------------------------------------------------
