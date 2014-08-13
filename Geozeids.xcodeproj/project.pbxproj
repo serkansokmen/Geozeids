@@ -119,6 +119,8 @@
 		1D96594EB6BCE7C4A6758E77 /* b2PolygonShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2PolygonShape.h; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/Shapes/b2PolygonShape.h; sourceTree = SOURCE_ROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		205C01CCE4351EE1038CED3A /* b2Rope.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2Rope.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Rope/b2Rope.cpp; sourceTree = SOURCE_ROOT; };
+		2070A6EB199AE5E20060882B /* Ripple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ripple.h; sourceTree = "<group>"; };
+		2070A6EC199AE6480060882B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2094E09E1960EECF0028498A /* ofxCoreMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCoreMotion.h; sourceTree = "<group>"; };
 		2094E09F1960EECF0028498A /* ofxCoreMotion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCoreMotion.mm; sourceTree = "<group>"; };
 		2094E0A11960EECF0028498A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
@@ -599,6 +601,8 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
+				2070A6EB199AE5E20060882B /* Ripple.h */,
+				2070A6EC199AE6480060882B /* Constants.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

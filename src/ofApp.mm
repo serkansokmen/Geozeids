@@ -6,7 +6,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     ofSetCircleResolution(160);
     ofBackground(BACKGROUND_COLOR);
-    ofSetLogLevel(OF_LOG_VERBOSE);
+    ofSetLogLevel(OF_LOG_ERROR);
     
     coreMotion.setupAttitude(CMAttitudeReferenceFrameXMagneticNorthZVertical);
     
@@ -24,7 +24,7 @@ void ofApp::update(){
     coreMotion.update();
     
     ofVec2f gravity = ofVec2f(coreMotion.getGravity().x, -coreMotion.getGravity().y);
-    gravity *= 5.f;
+    gravity *= 1.f;
     box2d.setGravity(gravity);
     box2d.update();
     
@@ -39,6 +39,15 @@ void ofApp::draw(){
     for (auto ripple : ripples) {
         ripple.get()->draw();
     }
+    
+//    ofSetColor(ofColor::greenYellow);
+//	shape.draw();
+    
+    ofSetColor(ofColor::blueViolet, 155.f);
+	for (int i=0; i<polyShapes.size(); i++) {
+		polyShapes[i].get()->draw();
+        ofCircle(polyShapes[i].get()->getPosition(), 3);
+	}
 }
 
 //--------------------------------------------------------------
@@ -50,12 +59,17 @@ void ofApp::exit(){
 void ofApp::touchDown(ofTouchEventArgs & touch){
     
     touchStart.set(touch);
+    shape.clear();
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
 
     touchEnd.set(touch);
+    
+    if (bRecordTouch) {
+        shape.addVertex(touch);
+    }
 }
 
 //--------------------------------------------------------------
@@ -63,48 +77,86 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     
     touchEnd.set(touch);
     
-    bool bTouchesAnother = false;
-    
-    ofLog(OF_LOG_VERBOSE, ofToString(touchStart));
-    ofLog(OF_LOG_VERBOSE, ofToString(touchEnd));
+    bool bIsRippleTouching = false;
     
     for (auto ripple : ripples) {
         
-        ofLog(OF_LOG_VERBOSE, ofToString(ripple.get()->getPosition()));
+        float dist = ofDist(ripple.get()->getPosition().x,
+                            ripple.get()->getPosition().y,
+                            touchEnd.x,
+                            touchEnd.y);
+        float radius = ripple.get()->getRadius();
         
-        if (ripple.get()->getPosition().distance(touchStart) > ripple.get()->getRadius()) {
-            bTouchesAnother = true;
+        if (dist < radius) {
+            bIsRippleTouching = true;
             break;
         }
     }
     
-//    if (!bTouchesAnother) {
-        float radius = touchEnd.distance(touchStart) / 5.f;
+    if (!bIsRippleTouching && !bRecordTouch) {
         
-        ofRectangle touchBounds(touch.x - radius/2,
-                                touch.y - radius/2,
-                                touch.x + radius/2,
-                                touch.y + radius/2);
+        float touchDist = touchEnd.distance(touchStart) / 5.f;
         
-        ofPtr<Ripple> ripple(new Ripple());
-        ripple.get()->setPhysics(MASS, BOUNCINESS, FRICTION);
-        ripple.get()->setup(box2d.getWorld(), touchEnd, radius);
-        ripple.get()->addForce(touchEnd - touchStart, radius * 2.f);
-        ripple.get()->touchId = touch.id;
-        ripple.get()->color = ofColor(OBJECT_COLOR);
-        ripples.push_back(ripple);
-//    }
+        if (touchDist > 10.f) {
+            
+            float mass = touchDist * 4.f;
+            float bounciness = .63f;
+            float friction = .35f;
+            
+            ofRectangle touchBounds(touch.x - touchDist/2,
+                                    touch.y - touchDist/2,
+                                    touch.x + touchDist/2,
+                                    touch.y + touchDist/2);
+            
+            ofPtr<Ripple> ripple(new Ripple());
+            ripple.get()->setPhysics(mass, bounciness, friction);
+            ripple.get()->setup(box2d.getWorld(), touchStart, touchDist);
+            ripple.get()->addForce(touchStart - touchEnd, touchDist * 200.8f);
+            ripple.get()->touchId = touch.id;
+            ripple.get()->color = ofColor(OBJECT_COLOR);
+            ripples.push_back(ripple);
+        }
+    }
+    
+    if (bRecordTouch) {
+        
+        shape.addVertex(touch);
+        
+        if (shape.getVertices().size() >= 3) {
+            
+            bool bTouches = false;
+            for (auto ps : polyShapes) {
+                if (ps.get()->getBoundingBox().inside(touchEnd)) {
+                    bTouches = true;
+                    break;
+                }
+            }
+            
+            if (!bTouches) {
+                // create a poly shape with the max verts allowed
+                // and the get just the convex hull from the shape
+                shape = shape.getResampledByCount(b2_maxPolygonVertices);
+                shape = getConvexHull(shape);
+                
+                ofPtr<ofxBox2dPolygon> poly = ofPtr<ofxBox2dPolygon>(new ofxBox2dPolygon);
+                poly.get()->addVertices(shape.getVertices());
+                poly.get()->setPhysics(70.f, 0.3f, 0.75f);
+                poly.get()->create(box2d.getWorld());
+                polyShapes.push_back(poly);
+                shape.clear();
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-    
-    ripples.clear();
+    bRecordTouch = !bRecordTouch;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchCancelled(ofTouchEventArgs & touch){
-    
+    bRecordTouch = false;
 }
 
 //--------------------------------------------------------------
