@@ -4,8 +4,9 @@
 void ofApp::setup(){
     
     ofSetFrameRate(60);
-    ofSetCircleResolution(100);
-    ofBackground(0);
+    ofSetCircleResolution(160);
+    ofBackground(BACKGROUND_COLOR);
+    ofSetLogLevel(OF_LOG_VERBOSE);
     
     coreMotion.setupAttitude(CMAttitudeReferenceFrameXMagneticNorthZVertical);
     
@@ -21,10 +22,12 @@ void ofApp::setup(){
 void ofApp::update(){
     
     coreMotion.update();
+    
     ofVec2f gravity = ofVec2f(coreMotion.getGravity().x, -coreMotion.getGravity().y);
-    gravity *= 10;
-    //box2d.setGravity(gravity);
+    gravity *= 5.f;
+    box2d.setGravity(gravity);
     box2d.update();
+    
     for (auto ripple : ripples) {
         ripple.get()->update();
     }
@@ -32,7 +35,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(255);
+
     for (auto ripple : ripples) {
         ripple.get()->draw();
     }
@@ -60,34 +63,43 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
     
     touchEnd.set(touch);
     
-    float radius = touchEnd.distance(touchStart) / 10.f;
+    bool bTouchesAnother = false;
     
-    ofRectangle touchBounds(touch.x - radius/2,
-                            touch.y - radius/2,
-                            touch.x + radius/2,
-                            touch.y + radius/2);
-    bool bAddNew = true;
+    ofLog(OF_LOG_VERBOSE, ofToString(touchStart));
+    ofLog(OF_LOG_VERBOSE, ofToString(touchEnd));
+    
     for (auto ripple : ripples) {
-        if (touchBounds.inside(ripple.get()->getPosition())) {
-            bAddNew = false;
-            return;
+        
+        ofLog(OF_LOG_VERBOSE, ofToString(ripple.get()->getPosition()));
+        
+        if (ripple.get()->getPosition().distance(touchStart) > ripple.get()->getRadius()) {
+            bTouchesAnother = true;
+            break;
         }
     }
     
-    if (bAddNew) {
+//    if (!bTouchesAnother) {
+        float radius = touchEnd.distance(touchStart) / 5.f;
+        
+        ofRectangle touchBounds(touch.x - radius/2,
+                                touch.y - radius/2,
+                                touch.x + radius/2,
+                                touch.y + radius/2);
+        
         ofPtr<Ripple> ripple(new Ripple());
-        ripple.get()->setPhysics(initialMass, bounciness, friction);
-        ripple.get()->setup(box2d.getWorld(), touchStart, radius);
-        ripple.get()->addForce(touchEnd, radius * 10.f);
+        ripple.get()->setPhysics(MASS, BOUNCINESS, FRICTION);
+        ripple.get()->setup(box2d.getWorld(), touchEnd, radius);
+        ripple.get()->addForce(touchEnd - touchStart, radius * 2.f);
         ripple.get()->touchId = touch.id;
-        ripple.get()->color = ofColor(ofRandom(100, 200));
+        ripple.get()->color = ofColor(OBJECT_COLOR);
         ripples.push_back(ripple);
-    }
+//    }
 }
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-
+    
+    ripples.clear();
 }
 
 //--------------------------------------------------------------
