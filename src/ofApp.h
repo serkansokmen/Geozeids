@@ -6,6 +6,7 @@
 #include "ofxCoreMotion.h"
 #include "Ripple.h"
 #include "Constants.h"
+#include "SoundData.h"
 
 
 class ofApp : public ofxiOSApp {
@@ -27,6 +28,10 @@ public:
     void gotMemoryWarning();
     void deviceOrientationChanged(int newOrientation);
     
+    // Contact listeners
+	void contactStart(ofxBox2dContactArgs &e);
+	void contactEnd(ofxBox2dContactArgs &e);
+    
     
     // Box2d
     ofxBox2d        box2d;
@@ -42,8 +47,10 @@ public:
     vector< ofPtr<Ripple> >             ripples;
     vector< ofPtr<ofxBox2dPolygon> >    polyShapes;
     
-    bool            bRecordTouch;
+    ofSoundPlayer   rippleSound[4];
     
+    bool            bRecordTouch;
     bool            breakupIntoTriangles;
+    
 	ofPolyline      shape;
 };

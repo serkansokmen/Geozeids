@@ -1,5 +1,8 @@
 #include "ofApp.h"
 
+
+#pragma mark - App Lifecycle
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     
@@ -11,11 +14,26 @@ void ofApp::setup(){
     coreMotion.setupAttitude(CMAttitudeReferenceFrameXMagneticNorthZVertical);
     
     box2d.init();
+    box2d.enableEvents();
     box2d.setGravity(0, 0);
     box2d.setFPS(60);
     box2d.createBounds();
     box2d.registerGrabbing();
     box2d.setIterations(1, 1);
+    
+    // register the listener so that we get the events
+	ofAddListener(box2d.contactStartEvents, this, &ofApp::contactStart);
+	ofAddListener(box2d.contactEndEvents, this, &ofApp::contactEnd);
+    
+    // Load Sounds
+    rippleSound[0].loadSound("themes/pack_2/sounds/E1.wav");
+    rippleSound[1].loadSound("themes/pack_2/sounds/E2.wav");
+    rippleSound[2].loadSound("themes/pack_2/sounds/E3.wav");
+    rippleSound[3].loadSound("themes/pack_2/sounds/E4.wav");
+	for (int i=0; i<N_SOUNDS; i++) {
+		rippleSound[i].setMultiPlay(true);
+		rippleSound[i].setLoop(false);
+	}
 }
 
 //--------------------------------------------------------------
@@ -35,13 +53,18 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    
     for (auto ripple : ripples) {
+        SoundData * data = (SoundData*)ripple.get()->getData();
+        
+        if(data && data->bHit) {
+            ripple.get()->color = ofColor::greenYellow;
+        }
+        else {
+            ripple.get()->color = OBJECT_COLOR;
+        }
         ripple.get()->draw();
     }
-    
-//    ofSetColor(ofColor::greenYellow);
-//	shape.draw();
     
     ofSetColor(ofColor::blueViolet, 155.f);
 	for (int i=0; i<polyShapes.size(); i++) {
@@ -50,10 +73,7 @@ void ofApp::draw(){
 	}
 }
 
-//--------------------------------------------------------------
-void ofApp::exit(){
-
-}
+#pragma mark - Touch Events
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
@@ -113,6 +133,12 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
             ripple.get()->setup(box2d.getWorld(), touchStart, touchDist);
             ripple.get()->addForce(touchStart - touchEnd, touchDist * 200.8f);
             ripple.get()->touchId = touch.id;
+            
+            ripple.get()->setData(new SoundData());
+            SoundData * sd = (SoundData*)ripple.get()->getData();
+            sd->soundID = ofRandom(0, N_SOUNDS);
+            sd->bHit	= false;
+            
             ripple.get()->color = ofColor(OBJECT_COLOR);
             ripples.push_back(ripple);
         }
@@ -159,6 +185,8 @@ void ofApp::touchCancelled(ofTouchEventArgs & touch){
     bRecordTouch = false;
 }
 
+#pragma mark - App Events
+
 //--------------------------------------------------------------
 void ofApp::lostFocus(){
 
@@ -177,4 +205,52 @@ void ofApp::gotMemoryWarning(){
 //--------------------------------------------------------------
 void ofApp::deviceOrientationChanged(int newOrientation){
 
+}
+
+//--------------------------------------------------------------
+void ofApp::exit(){
+    
+}
+
+#pragma mark - Contact Listeners
+
+//--------------------------------------------------------------
+void ofApp::contactStart(ofxBox2dContactArgs &e) {
+	if(e.a != NULL && e.b != NULL) {
+		
+		// if we collide with the ground we do not
+		// want to play a sound. this is how you do that
+		if(e.a->GetType() == b2Shape::e_circle && e.b->GetType() == b2Shape::e_circle) {
+			
+			SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+			SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+			
+			if(aData) {
+				aData->bHit = true;
+				rippleSound[aData->soundID].play();
+			}
+			
+			if(bData) {
+				bData->bHit = true;
+				rippleSound[bData->soundID].play();
+			}
+		}
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::contactEnd(ofxBox2dContactArgs &e) {
+	if(e.a != NULL && e.b != NULL) {
+		
+		SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+		SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+		
+		if(aData) {
+			aData->bHit = false;
+		}
+		
+		if(bData) {
+			bData->bHit = false;
+		}
+	}
 }

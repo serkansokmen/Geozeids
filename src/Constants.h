@@ -18,5 +18,6 @@
 #define     OBJECT_COLOR        ofColor::white
 
 
+#define     N_SOUNDS            4
 
 #endif
