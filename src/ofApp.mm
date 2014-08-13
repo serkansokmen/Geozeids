@@ -1,6 +1,14 @@
 #include "ofApp.h"
 
 
+static bool removeShapeOffScreen(ofPtr<ofxBox2dBaseShape> shape) {
+    if (!ofRectangle(0, -400, ofGetWidth(), ofGetHeight()+400).inside(shape.get()->getPosition())) {
+        return true;
+    }
+    return false;
+}
+
+
 #pragma mark - App Lifecycle
 
 //--------------------------------------------------------------
@@ -40,6 +48,9 @@ void ofApp::setup(){
 void ofApp::update(){
     
     coreMotion.update();
+    
+    ofRemove(ripples, removeShapeOffScreen);
+    ofRemove(polyShapes, removeShapeOffScreen);
     
     ofVec2f gravity = ofVec2f(coreMotion.getGravity().x, -coreMotion.getGravity().y);
     gravity *= 1.f;
