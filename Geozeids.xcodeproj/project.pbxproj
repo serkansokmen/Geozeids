@@ -19,6 +19,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		1FC2864D958F177964A20421 /* b2ChainAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD20B1FFE795860DB1C68BF2 /* b2ChainAndCircleContact.cpp */; };
+		2070A6F3199B82340060882B /* SettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2070A6F1199B82340060882B /* SettingsViewController.mm */; };
+		2070A6F4199B82340060882B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2070A6F2199B82340060882B /* SettingsViewController.xib */; };
+		2094E0C21960EECF0028498A /* ofxCoreMotion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2094E09F1960EECF0028498A /* ofxCoreMotion.mm */; };
+		2094E0C41960EECF0028498A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 2094E0A11960EECF0028498A /* screenshot.png */; };
 		20CC9B36195EFF4E00D199BB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CC9B35195EFF4E00D199BB /* CoreMotion.framework */; };
 		22A83FE368C671FA8DBD5E51 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F672EBFCB4887C08BBB23527 /* b2Math.cpp */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -117,6 +121,15 @@
 		1D96594EB6BCE7C4A6758E77 /* b2PolygonShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2PolygonShape.h; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/Shapes/b2PolygonShape.h; sourceTree = SOURCE_ROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		205C01CCE4351EE1038CED3A /* b2Rope.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2Rope.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Rope/b2Rope.cpp; sourceTree = SOURCE_ROOT; };
+		2070A6EB199AE5E20060882B /* Ripple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ripple.h; sourceTree = "<group>"; };
+		2070A6EC199AE6480060882B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2070A6ED199B7D130060882B /* SoundData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundData.h; sourceTree = "<group>"; };
+		2070A6F0199B82340060882B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		2070A6F1199B82340060882B /* SettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingsViewController.mm; sourceTree = "<group>"; };
+		2070A6F2199B82340060882B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		2094E09E1960EECF0028498A /* ofxCoreMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCoreMotion.h; sourceTree = "<group>"; };
+		2094E09F1960EECF0028498A /* ofxCoreMotion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCoreMotion.mm; sourceTree = "<group>"; };
+		2094E0A11960EECF0028498A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		209BCEF79F286C9203801938 /* b2GearJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2GearJoint.h; path = ../../../addons/ofxBox2d/libs/Box2D/Dynamics/Joints/b2GearJoint.h; sourceTree = SOURCE_ROOT; };
 		20CC9B35195EFF4E00D199BB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		229CB9C8AF92D3460F8D554A /* ofxBox2d.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBox2d.cpp; path = ../../../addons/ofxBox2d/src/ofxBox2d.cpp; sourceTree = SOURCE_ROOT; };
@@ -296,6 +309,43 @@
 				1D6058910D05DD3D006BFB54 /* Geozeids.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2070A6EF199B82150060882B /* gui */ = {
+			isa = PBXGroup;
+			children = (
+				2070A6F0199B82340060882B /* SettingsViewController.h */,
+				2070A6F1199B82340060882B /* SettingsViewController.mm */,
+				2070A6F2199B82340060882B /* SettingsViewController.xib */,
+			);
+			name = gui;
+			sourceTree = "<group>";
+		};
+		2094E0671960EECE0028498A /* ofxCoreMotion */ = {
+			isa = PBXGroup;
+			children = (
+				2094E0681960EECE0028498A /* ofxCoreMotion */,
+				2094E0A11960EECF0028498A /* screenshot.png */,
+			);
+			name = ofxCoreMotion;
+			path = ../../../addons/ofxCoreMotion;
+			sourceTree = "<group>";
+		};
+		2094E0681960EECE0028498A /* ofxCoreMotion */ = {
+			isa = PBXGroup;
+			children = (
+				2094E09D1960EECF0028498A /* src */,
+			);
+			path = ofxCoreMotion;
+			sourceTree = "<group>";
+		};
+		2094E09D1960EECF0028498A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				2094E09E1960EECF0028498A /* ofxCoreMotion.h */,
+				2094E09F1960EECF0028498A /* ofxCoreMotion.mm */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -500,6 +550,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				2094E0671960EECE0028498A /* ofxCoreMotion */,
 				BD1B24C549BFA7D54BC59DE3 /* ofxBox2d */,
 			);
 			name = addons;
@@ -563,9 +614,13 @@
 		E4D8936A11527B74007E1F53 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2070A6EF199B82150060882B /* gui */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
+				2070A6EB199AE5E20060882B /* Ripple.h */,
+				2070A6EC199AE6480060882B /* Constants.h */,
+				2070A6ED199B7D130060882B /* SoundData.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -661,11 +716,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
+				2070A6F4199B82340060882B /* SettingsViewController.xib in Resources */,
 				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
 				678E130817951530005B6D19 /* Icon@2x.png in Resources */,
 				678E130A17951536005B6D19 /* Icon.png in Resources */,
 				678E130C1795153C005B6D19 /* Default.png in Resources */,
 				678E130E17951540005B6D19 /* Default@2x.png in Resources */,
+				2094E0C41960EECF0028498A /* screenshot.png in Resources */,
 				678E131017951549005B6D19 /* Default-568h@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -711,6 +768,7 @@
 				71C677669B75120425DE19D4 /* b2DynamicTree.cpp in Sources */,
 				19894C344A6861A26A61D2C0 /* b2TimeOfImpact.cpp in Sources */,
 				453D704CD216672147B2EEC2 /* b2ChainShape.cpp in Sources */,
+				2094E0C21960EECF0028498A /* ofxCoreMotion.mm in Sources */,
 				DA846513DA696B1E8921BBC3 /* b2CircleShape.cpp in Sources */,
 				6DEA36329DE746459C62983F /* b2EdgeShape.cpp in Sources */,
 				981EA7C2357295AE8501F4C6 /* b2PolygonShape.cpp in Sources */,
@@ -731,6 +789,7 @@
 				70ACBBD5DBE2725EC1E99CCF /* b2CircleContact.cpp in Sources */,
 				BFD2A0EEBE3B4153659EC355 /* b2Contact.cpp in Sources */,
 				F32187D344F58022DFD48C0F /* b2ContactSolver.cpp in Sources */,
+				2070A6F3199B82340060882B /* SettingsViewController.mm in Sources */,
 				ACB31C66D0D7C71A43276982 /* b2EdgeAndCircleContact.cpp in Sources */,
 				0B399DEC7ADBF7A3B1CF81A9 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				7E1AAAB7A2F92465251AE49E /* b2PolygonAndCircleContact.cpp in Sources */,
