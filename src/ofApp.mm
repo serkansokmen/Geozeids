@@ -1,4 +1,8 @@
 #include "ofApp.h"
+#include "SettingsViewController.h"
+
+
+SettingsViewController *settingsViewController;
 
 
 static bool removeShapeOffScreen(ofPtr<ofxBox2dBaseShape> shape) {
@@ -29,6 +33,8 @@ void ofApp::setup(){
     box2d.registerGrabbing();
     box2d.setIterations(1, 1);
     
+    bRecordTouch = true;
+    
     // register the listener so that we get the events
 	ofAddListener(box2d.contactStartEvents, this, &ofApp::contactStart);
 	ofAddListener(box2d.contactEndEvents, this, &ofApp::contactEnd);
@@ -42,6 +48,12 @@ void ofApp::setup(){
 		rippleSound[i].setMultiPlay(true);
 		rippleSound[i].setLoop(false);
 	}
+    
+    // Add settings view
+    settingsViewController = [[SettingsViewController alloc]
+                              initWithNibName:@"SettingsViewController" bundle:nil];
+    [ofxiOSGetGLParentView() addSubview:settingsViewController.view];
+    [settingsViewController.view setHidden:YES];
 }
 
 //--------------------------------------------------------------
@@ -188,7 +200,18 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-    bRecordTouch = !bRecordTouch;
+//    bRecordTouch = !bRecordTouch;
+    if( settingsViewController.view.hidden ){
+		settingsViewController.view.hidden = NO;
+        
+        NSTimeInterval animationDuration = 200;
+        CGRect newFrameSize = CGRectMake(0, 0, ofGetWidth()/2, ofGetHeight()/2);
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:animationDuration];
+        settingsViewController.view.frame = newFrameSize;
+        [UIView commitAnimations];
+        
+	}
 }
 
 //--------------------------------------------------------------
