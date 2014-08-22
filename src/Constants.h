@@ -10,7 +10,7 @@
 #define Geozeids_Constants_h
 
 
-#define     REPEAT_RES          1
+#define     REPEAT_RES          2
 #define     MAX_OBJECTS         20
 
 #define     BACKGROUND_COLOR    ofColor::black

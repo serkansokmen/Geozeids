@@ -51,7 +51,7 @@
 }
 - (IBAction)clearRipples:(id)sender
 {
-    myApp->ripples.clear();
+    myApp->circleRipples.clear();
 }
 - (IBAction)tailLengthChanged:(UISlider *)sender
 {

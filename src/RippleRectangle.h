@@ -1,17 +1,18 @@
 //
-//  Ripple.h
+//  RippleEllipse.h
 //  Geozeids
 //
-//  Created by Serkan Sökmen on 13/08/14.
+//  Created by Serkan Sökmen on 22/08/14.
 //
 //
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBox2dCircle.h"
+#include "ofxBox2dRect.h"
+#include "RippleBase.h"
 #include "Constants.h"
 
-class Ripple : public ofxBox2dCircle {
+class RippleRectangle : public ofxBox2dRect {
     
     vector<ofVec2f>     prevPositions;
     ofVec2f forcePos;
@@ -26,7 +27,7 @@ class Ripple : public ofxBox2dCircle {
 public:
     
     void setup(b2World * b2dworld, ofVec2f &pts, float radius, int length = 10) {
-        ofxBox2dCircle::setup(b2dworld, pts.x, pts.y, radius);
+        ofxBox2dRect::setup(b2dworld, pts.x, pts.y, radius, radius);
         tailLength = length;
         prevPositions.assign(length, pts);
     }
@@ -39,16 +40,16 @@ public:
         }
         
         t = ofGetFrameNum() * timeSpeed;
-
+        
         forcePos = getPosition();
         field = getField(forcePos + getVelocity());
-        float speed = (getRadius() + ofNoise(t, field.x, field.y));
+        float speed = (getWidth()*getHeight() + ofNoise(t, field.x, field.y));
         forcePos.x += ofLerp(-speed, speed, field.x);
         forcePos.y += ofLerp(-speed, speed, field.y);
         
         
         ofLog() << "Position: " << getPosition() << ", Force: " << forcePos << ", Time: " << t << endl;
-        addAttractionPoint(forcePos, pow(getRadius(), 2) * ofRandom(forceMultiplier));
+        addAttractionPoint(forcePos, pow(getWidth()*getHeight(), 2) * ofRandom(forceMultiplier));
     };
     
     void draw(){
@@ -59,12 +60,20 @@ public:
         
         for (int i = 0; i < count; i+= REPEAT_RES) {
             
-            float radius = ofLerp(0, getRadius(), (float)i / count);
-            float alpha = ofNormalize(radius, 0.f, getRadius()) * 255.f;
+            // float radius = ofLerp(0, getWidth()*getHeight(), (float)i / count);
+            float w = ofLerp(0, getWidth(), (float)i / count);
+            float h = ofLerp(0, getHeight(), (float)i / count);
+            float rot = getRotation();
+            
+            float alpha = ofNormalize(w*h, 0.f, getWidth()*getHeight()) * 255.f;
             ofVec2f pos = prevPositions[i];
             
+            ofPushMatrix();
+            ofTranslate(pos);
+//            ofRotate(rot);
             ofSetColor(color, alpha);
-            ofCircle(pos, radius);
+            ofRectangle(0, 0, w, h);
+            ofPopMatrix();
         }
         
         ofFill();
