@@ -18,5 +18,9 @@
 - (IBAction)done:(id)sender;
 - (IBAction)clearPolys:(id)sender;
 - (IBAction)clearRipples:(id)sender;
+- (IBAction)tailLengthChanged:(UISlider *)sender;
+- (IBAction)gravityChanged:(UISlider *)sender;
+- (IBAction)toggleColorize:(UISwitch *)sender;
+- (IBAction)forceChanged:(UISlider *)sender;
 
 @end

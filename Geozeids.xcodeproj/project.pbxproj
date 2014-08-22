@@ -23,6 +23,28 @@
 		2070A6F4199B82340060882B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2070A6F2199B82340060882B /* SettingsViewController.xib */; };
 		2094E0C21960EECF0028498A /* ofxCoreMotion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2094E09F1960EECF0028498A /* ofxCoreMotion.mm */; };
 		2094E0C41960EECF0028498A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 2094E0A11960EECF0028498A /* screenshot.png */; };
+		20B3D0CF199D08FA00713FB7 /* AUParamInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0A1199D08FA00713FB7 /* AUParamInfo.cpp */; };
+		20B3D0D0199D08FA00713FB7 /* CAAUParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0A3199D08FA00713FB7 /* CAAUParameter.cpp */; };
+		20B3D0D1199D08FA00713FB7 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0A5199D08FA00713FB7 /* CADebugMacros.cpp */; };
+		20B3D0D2199D08FA00713FB7 /* ofxAudioUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0A8199D08FA00713FB7 /* ofxAudioUnit.cpp */; };
+		20B3D0D3199D08FA00713FB7 /* ofxAudioUnitCocoaUtilties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0AB199D08FA00713FB7 /* ofxAudioUnitCocoaUtilties.mm */; };
+		20B3D0D4199D08FA00713FB7 /* ofxAudioUnitDSPNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0AC199D08FA00713FB7 /* ofxAudioUnitDSPNode.cpp */; };
+		20B3D0D5199D08FA00713FB7 /* ofxAudioUnitFftNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0AE199D08FA00713FB7 /* ofxAudioUnitFftNode.cpp */; };
+		20B3D0D6199D08FA00713FB7 /* ofxAudioUnitFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0B0199D08FA00713FB7 /* ofxAudioUnitFilePlayer.cpp */; };
+		20B3D0D7199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0B2199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.cpp */; };
+		20B3D0D8199D08FA00713FB7 /* ofxAudioUnitInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0B4199D08FA00713FB7 /* ofxAudioUnitInput.cpp */; };
+		20B3D0D9199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0B6199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.cpp */; };
+		20B3D0DA199D08FA00713FB7 /* ofxAudioUnitMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0B8199D08FA00713FB7 /* ofxAudioUnitMidi.cpp */; };
+		20B3D0DB199D08FA00713FB7 /* ofxAudioUnitMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0BA199D08FA00713FB7 /* ofxAudioUnitMixer.cpp */; };
+		20B3D0DC199D08FA00713FB7 /* ofxAudioUnitNetReceive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0BC199D08FA00713FB7 /* ofxAudioUnitNetReceive.cpp */; };
+		20B3D0DD199D08FA00713FB7 /* ofxAudioUnitNetSend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0BE199D08FA00713FB7 /* ofxAudioUnitNetSend.cpp */; };
+		20B3D0DE199D08FA00713FB7 /* ofxAudioUnitOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0C0199D08FA00713FB7 /* ofxAudioUnitOutput.cpp */; };
+		20B3D0DF199D08FA00713FB7 /* ofxAudioUnitRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0C2199D08FA00713FB7 /* ofxAudioUnitRecorder.cpp */; };
+		20B3D0E0199D08FA00713FB7 /* ofxAudioUnitSampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0C4199D08FA00713FB7 /* ofxAudioUnitSampler.cpp */; };
+		20B3D0E1199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0C6199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.cpp */; };
+		20B3D0E2199D08FA00713FB7 /* ofxAudioUnitTap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0C8199D08FA00713FB7 /* ofxAudioUnitTap.cpp */; };
+		20B3D0E3199D08FA00713FB7 /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D0CC199D08FA00713FB7 /* TPCircularBuffer.c */; };
+		20B3D0E4199D08FA00713FB7 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B3D0CE199D08FA00713FB7 /* CoreMIDI.framework */; };
 		20CC9B36195EFF4E00D199BB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CC9B35195EFF4E00D199BB /* CoreMotion.framework */; };
 		22A83FE368C671FA8DBD5E51 /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F672EBFCB4887C08BBB23527 /* b2Math.cpp */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -131,6 +153,51 @@
 		2094E09F1960EECF0028498A /* ofxCoreMotion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCoreMotion.mm; sourceTree = "<group>"; };
 		2094E0A11960EECF0028498A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		209BCEF79F286C9203801938 /* b2GearJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2GearJoint.h; path = ../../../addons/ofxBox2d/libs/Box2D/Dynamics/Joints/b2GearJoint.h; sourceTree = SOURCE_ROOT; };
+		20B3D0A1199D08FA00713FB7 /* AUParamInfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AUParamInfo.cpp; sourceTree = "<group>"; };
+		20B3D0A2199D08FA00713FB7 /* AUParamInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUParamInfo.h; sourceTree = "<group>"; };
+		20B3D0A3199D08FA00713FB7 /* CAAUParameter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CAAUParameter.cpp; sourceTree = "<group>"; };
+		20B3D0A4199D08FA00713FB7 /* CAAUParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAAUParameter.h; sourceTree = "<group>"; };
+		20B3D0A5199D08FA00713FB7 /* CADebugMacros.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
+		20B3D0A6199D08FA00713FB7 /* CADebugMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		20B3D0A7199D08FA00713FB7 /* CAXException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		20B3D0A8199D08FA00713FB7 /* ofxAudioUnit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnit.cpp; sourceTree = "<group>"; };
+		20B3D0A9199D08FA00713FB7 /* ofxAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnit.h; sourceTree = "<group>"; };
+		20B3D0AA199D08FA00713FB7 /* ofxAudioUnitBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitBase.h; sourceTree = "<group>"; };
+		20B3D0AB199D08FA00713FB7 /* ofxAudioUnitCocoaUtilties.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAudioUnitCocoaUtilties.mm; sourceTree = "<group>"; };
+		20B3D0AC199D08FA00713FB7 /* ofxAudioUnitDSPNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitDSPNode.cpp; sourceTree = "<group>"; };
+		20B3D0AD199D08FA00713FB7 /* ofxAudioUnitDSPNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitDSPNode.h; sourceTree = "<group>"; };
+		20B3D0AE199D08FA00713FB7 /* ofxAudioUnitFftNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitFftNode.cpp; sourceTree = "<group>"; };
+		20B3D0AF199D08FA00713FB7 /* ofxAudioUnitFftNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitFftNode.h; sourceTree = "<group>"; };
+		20B3D0B0199D08FA00713FB7 /* ofxAudioUnitFilePlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitFilePlayer.cpp; sourceTree = "<group>"; };
+		20B3D0B1199D08FA00713FB7 /* ofxAudioUnitFilePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitFilePlayer.h; sourceTree = "<group>"; };
+		20B3D0B2199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitHardwareUtils.cpp; sourceTree = "<group>"; };
+		20B3D0B3199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitHardwareUtils.h; sourceTree = "<group>"; };
+		20B3D0B4199D08FA00713FB7 /* ofxAudioUnitInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitInput.cpp; sourceTree = "<group>"; };
+		20B3D0B5199D08FA00713FB7 /* ofxAudioUnitInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitInput.h; sourceTree = "<group>"; };
+		20B3D0B6199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitMatrixMixer.cpp; sourceTree = "<group>"; };
+		20B3D0B7199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitMatrixMixer.h; sourceTree = "<group>"; };
+		20B3D0B8199D08FA00713FB7 /* ofxAudioUnitMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitMidi.cpp; sourceTree = "<group>"; };
+		20B3D0B9199D08FA00713FB7 /* ofxAudioUnitMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitMidi.h; sourceTree = "<group>"; };
+		20B3D0BA199D08FA00713FB7 /* ofxAudioUnitMixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitMixer.cpp; sourceTree = "<group>"; };
+		20B3D0BB199D08FA00713FB7 /* ofxAudioUnitMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitMixer.h; sourceTree = "<group>"; };
+		20B3D0BC199D08FA00713FB7 /* ofxAudioUnitNetReceive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitNetReceive.cpp; sourceTree = "<group>"; };
+		20B3D0BD199D08FA00713FB7 /* ofxAudioUnitNetReceive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitNetReceive.h; sourceTree = "<group>"; };
+		20B3D0BE199D08FA00713FB7 /* ofxAudioUnitNetSend.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitNetSend.cpp; sourceTree = "<group>"; };
+		20B3D0BF199D08FA00713FB7 /* ofxAudioUnitNetSend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitNetSend.h; sourceTree = "<group>"; };
+		20B3D0C0199D08FA00713FB7 /* ofxAudioUnitOutput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitOutput.cpp; sourceTree = "<group>"; };
+		20B3D0C1199D08FA00713FB7 /* ofxAudioUnitOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitOutput.h; sourceTree = "<group>"; };
+		20B3D0C2199D08FA00713FB7 /* ofxAudioUnitRecorder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitRecorder.cpp; sourceTree = "<group>"; };
+		20B3D0C3199D08FA00713FB7 /* ofxAudioUnitRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitRecorder.h; sourceTree = "<group>"; };
+		20B3D0C4199D08FA00713FB7 /* ofxAudioUnitSampler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitSampler.cpp; sourceTree = "<group>"; };
+		20B3D0C5199D08FA00713FB7 /* ofxAudioUnitSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitSampler.h; sourceTree = "<group>"; };
+		20B3D0C6199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitSpeechSynth.cpp; sourceTree = "<group>"; };
+		20B3D0C7199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitSpeechSynth.h; sourceTree = "<group>"; };
+		20B3D0C8199D08FA00713FB7 /* ofxAudioUnitTap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitTap.cpp; sourceTree = "<group>"; };
+		20B3D0C9199D08FA00713FB7 /* ofxAudioUnitTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitTap.h; sourceTree = "<group>"; };
+		20B3D0CA199D08FA00713FB7 /* ofxAudioUnitUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitUtils.h; sourceTree = "<group>"; };
+		20B3D0CC199D08FA00713FB7 /* TPCircularBuffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		20B3D0CD199D08FA00713FB7 /* TPCircularBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		20B3D0CE199D08FA00713FB7 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = ../../../../../../../../System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
 		20CC9B35195EFF4E00D199BB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		229CB9C8AF92D3460F8D554A /* ofxBox2d.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBox2d.cpp; path = ../../../addons/ofxBox2d/src/ofxBox2d.cpp; sourceTree = SOURCE_ROOT; };
 		2740F234BABAAF7475AC01AA /* b2EdgeShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2EdgeShape.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp; sourceTree = SOURCE_ROOT; };
@@ -280,6 +347,7 @@
 				BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */,
 				53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */,
 				5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */,
+				20B3D0E4199D08FA00713FB7 /* CoreMIDI.framework in Frameworks */,
 				E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */,
 				E41D400B13B39D2100A75A5D /* AVFoundation.framework in Frameworks */,
 				E41D400C13B39D2100A75A5D /* CoreMedia.framework in Frameworks */,
@@ -346,6 +414,83 @@
 				2094E09F1960EECF0028498A /* ofxCoreMotion.mm */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		20B3D09E199D08FA00713FB7 /* ofxAudioUnit */ = {
+			isa = PBXGroup;
+			children = (
+				20B3D09F199D08FA00713FB7 /* src */,
+				20B3D0CE199D08FA00713FB7 /* CoreMIDI.framework */,
+			);
+			name = ofxAudioUnit;
+			sourceTree = "<group>";
+		};
+		20B3D09F199D08FA00713FB7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				20B3D0A0199D08FA00713FB7 /* CAPublicUtility */,
+				20B3D0A8199D08FA00713FB7 /* ofxAudioUnit.cpp */,
+				20B3D0A9199D08FA00713FB7 /* ofxAudioUnit.h */,
+				20B3D0AA199D08FA00713FB7 /* ofxAudioUnitBase.h */,
+				20B3D0AB199D08FA00713FB7 /* ofxAudioUnitCocoaUtilties.mm */,
+				20B3D0AC199D08FA00713FB7 /* ofxAudioUnitDSPNode.cpp */,
+				20B3D0AD199D08FA00713FB7 /* ofxAudioUnitDSPNode.h */,
+				20B3D0AE199D08FA00713FB7 /* ofxAudioUnitFftNode.cpp */,
+				20B3D0AF199D08FA00713FB7 /* ofxAudioUnitFftNode.h */,
+				20B3D0B0199D08FA00713FB7 /* ofxAudioUnitFilePlayer.cpp */,
+				20B3D0B1199D08FA00713FB7 /* ofxAudioUnitFilePlayer.h */,
+				20B3D0B2199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.cpp */,
+				20B3D0B3199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.h */,
+				20B3D0B4199D08FA00713FB7 /* ofxAudioUnitInput.cpp */,
+				20B3D0B5199D08FA00713FB7 /* ofxAudioUnitInput.h */,
+				20B3D0B6199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.cpp */,
+				20B3D0B7199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.h */,
+				20B3D0B8199D08FA00713FB7 /* ofxAudioUnitMidi.cpp */,
+				20B3D0B9199D08FA00713FB7 /* ofxAudioUnitMidi.h */,
+				20B3D0BA199D08FA00713FB7 /* ofxAudioUnitMixer.cpp */,
+				20B3D0BB199D08FA00713FB7 /* ofxAudioUnitMixer.h */,
+				20B3D0BC199D08FA00713FB7 /* ofxAudioUnitNetReceive.cpp */,
+				20B3D0BD199D08FA00713FB7 /* ofxAudioUnitNetReceive.h */,
+				20B3D0BE199D08FA00713FB7 /* ofxAudioUnitNetSend.cpp */,
+				20B3D0BF199D08FA00713FB7 /* ofxAudioUnitNetSend.h */,
+				20B3D0C0199D08FA00713FB7 /* ofxAudioUnitOutput.cpp */,
+				20B3D0C1199D08FA00713FB7 /* ofxAudioUnitOutput.h */,
+				20B3D0C2199D08FA00713FB7 /* ofxAudioUnitRecorder.cpp */,
+				20B3D0C3199D08FA00713FB7 /* ofxAudioUnitRecorder.h */,
+				20B3D0C4199D08FA00713FB7 /* ofxAudioUnitSampler.cpp */,
+				20B3D0C5199D08FA00713FB7 /* ofxAudioUnitSampler.h */,
+				20B3D0C6199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.cpp */,
+				20B3D0C7199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.h */,
+				20B3D0C8199D08FA00713FB7 /* ofxAudioUnitTap.cpp */,
+				20B3D0C9199D08FA00713FB7 /* ofxAudioUnitTap.h */,
+				20B3D0CA199D08FA00713FB7 /* ofxAudioUnitUtils.h */,
+				20B3D0CB199D08FA00713FB7 /* TPCircularBuffer */,
+			);
+			name = src;
+			path = ../../../addons/ofxAudioUnit/src;
+			sourceTree = "<group>";
+		};
+		20B3D0A0199D08FA00713FB7 /* CAPublicUtility */ = {
+			isa = PBXGroup;
+			children = (
+				20B3D0A1199D08FA00713FB7 /* AUParamInfo.cpp */,
+				20B3D0A2199D08FA00713FB7 /* AUParamInfo.h */,
+				20B3D0A3199D08FA00713FB7 /* CAAUParameter.cpp */,
+				20B3D0A4199D08FA00713FB7 /* CAAUParameter.h */,
+				20B3D0A5199D08FA00713FB7 /* CADebugMacros.cpp */,
+				20B3D0A6199D08FA00713FB7 /* CADebugMacros.h */,
+				20B3D0A7199D08FA00713FB7 /* CAXException.h */,
+			);
+			path = CAPublicUtility;
+			sourceTree = "<group>";
+		};
+		20B3D0CB199D08FA00713FB7 /* TPCircularBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				20B3D0CC199D08FA00713FB7 /* TPCircularBuffer.c */,
+				20B3D0CD199D08FA00713FB7 /* TPCircularBuffer.h */,
+			);
+			path = TPCircularBuffer;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -550,6 +695,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				20B3D09E199D08FA00713FB7 /* ofxAudioUnit */,
 				2094E0671960EECE0028498A /* ofxCoreMotion */,
 				BD1B24C549BFA7D54BC59DE3 /* ofxBox2d */,
 			);
@@ -755,54 +901,75 @@
 				B16C89D9CA996CA8FD860D81 /* ofxBox2d.cpp in Sources */,
 				F2FF2F9D6699B4B328CB6BE3 /* ofxBox2dBaseShape.cpp in Sources */,
 				AE9254BC31C3409899D28DC9 /* ofxBox2dCircle.cpp in Sources */,
+				20B3D0E3199D08FA00713FB7 /* TPCircularBuffer.c in Sources */,
 				4D09B9611BCF4603581DFEE4 /* ofxBox2dEdge.cpp in Sources */,
 				12548B44285B5C07EEA5379C /* ofxBox2dJoint.cpp in Sources */,
 				DFACEC3A1E9D23315321D7EA /* ofxBox2dPolygon.cpp in Sources */,
 				B103DF2084E0F38D03E0E6F1 /* ofxBox2dRect.cpp in Sources */,
+				20B3D0D5199D08FA00713FB7 /* ofxAudioUnitFftNode.cpp in Sources */,
 				1B19FD7E51B73109C4AC02D9 /* b2BroadPhase.cpp in Sources */,
 				2F666321514A2075B12CE4EE /* b2CollideCircle.cpp in Sources */,
 				F387370DB571155BC1282B7D /* b2CollideEdge.cpp in Sources */,
 				298EAD2C029D9959F5B32246 /* b2CollidePolygon.cpp in Sources */,
 				AC5A3D9E6C3E12122C80F404 /* b2Collision.cpp in Sources */,
 				A2E3224BF9B63DAA802A0F18 /* b2Distance.cpp in Sources */,
+				20B3D0D7199D08FA00713FB7 /* ofxAudioUnitHardwareUtils.cpp in Sources */,
 				71C677669B75120425DE19D4 /* b2DynamicTree.cpp in Sources */,
 				19894C344A6861A26A61D2C0 /* b2TimeOfImpact.cpp in Sources */,
 				453D704CD216672147B2EEC2 /* b2ChainShape.cpp in Sources */,
 				2094E0C21960EECF0028498A /* ofxCoreMotion.mm in Sources */,
+				20B3D0DE199D08FA00713FB7 /* ofxAudioUnitOutput.cpp in Sources */,
 				DA846513DA696B1E8921BBC3 /* b2CircleShape.cpp in Sources */,
+				20B3D0D4199D08FA00713FB7 /* ofxAudioUnitDSPNode.cpp in Sources */,
 				6DEA36329DE746459C62983F /* b2EdgeShape.cpp in Sources */,
 				981EA7C2357295AE8501F4C6 /* b2PolygonShape.cpp in Sources */,
+				20B3D0DF199D08FA00713FB7 /* ofxAudioUnitRecorder.cpp in Sources */,
 				BB885F5F39C8DA070D80EF02 /* b2BlockAllocator.cpp in Sources */,
 				89F31F234274A62F3501E2EE /* b2Draw.cpp in Sources */,
 				22A83FE368C671FA8DBD5E51 /* b2Math.cpp in Sources */,
+				20B3D0D0199D08FA00713FB7 /* CAAUParameter.cpp in Sources */,
 				CB503B33759F22A302B8FC6E /* b2Settings.cpp in Sources */,
 				0C7BD977292F7D20B41DF594 /* b2StackAllocator.cpp in Sources */,
 				1BE4156E2DF3B30461C48C70 /* b2Timer.cpp in Sources */,
 				3E76A164B41BCEB11B15C175 /* b2Body.cpp in Sources */,
 				C3D8EF14A387EA959014AD91 /* b2ContactManager.cpp in Sources */,
+				20B3D0D6199D08FA00713FB7 /* ofxAudioUnitFilePlayer.cpp in Sources */,
+				20B3D0D9199D08FA00713FB7 /* ofxAudioUnitMatrixMixer.cpp in Sources */,
 				FA7300BAC71DAC1ABAF6EE15 /* b2Fixture.cpp in Sources */,
 				6FCE95D2EF10ACCEC2724688 /* b2Island.cpp in Sources */,
 				AC527216645D66921FB3E36F /* b2World.cpp in Sources */,
 				5146AEB9E58FB1B388820C2A /* b2WorldCallbacks.cpp in Sources */,
 				1FC2864D958F177964A20421 /* b2ChainAndCircleContact.cpp in Sources */,
+				20B3D0DB199D08FA00713FB7 /* ofxAudioUnitMixer.cpp in Sources */,
+				20B3D0DA199D08FA00713FB7 /* ofxAudioUnitMidi.cpp in Sources */,
+				20B3D0D3199D08FA00713FB7 /* ofxAudioUnitCocoaUtilties.mm in Sources */,
 				39303C5BE86B7B4AD0770567 /* b2ChainAndPolygonContact.cpp in Sources */,
 				70ACBBD5DBE2725EC1E99CCF /* b2CircleContact.cpp in Sources */,
 				BFD2A0EEBE3B4153659EC355 /* b2Contact.cpp in Sources */,
 				F32187D344F58022DFD48C0F /* b2ContactSolver.cpp in Sources */,
+				20B3D0D1199D08FA00713FB7 /* CADebugMacros.cpp in Sources */,
 				2070A6F3199B82340060882B /* SettingsViewController.mm in Sources */,
+				20B3D0D2199D08FA00713FB7 /* ofxAudioUnit.cpp in Sources */,
+				20B3D0DD199D08FA00713FB7 /* ofxAudioUnitNetSend.cpp in Sources */,
+				20B3D0CF199D08FA00713FB7 /* AUParamInfo.cpp in Sources */,
+				20B3D0DC199D08FA00713FB7 /* ofxAudioUnitNetReceive.cpp in Sources */,
+				20B3D0D8199D08FA00713FB7 /* ofxAudioUnitInput.cpp in Sources */,
 				ACB31C66D0D7C71A43276982 /* b2EdgeAndCircleContact.cpp in Sources */,
 				0B399DEC7ADBF7A3B1CF81A9 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				7E1AAAB7A2F92465251AE49E /* b2PolygonAndCircleContact.cpp in Sources */,
 				41DDB078572B368F685E19F8 /* b2PolygonContact.cpp in Sources */,
 				14F3FB468FED85DD86CC9BCF /* b2DistanceJoint.cpp in Sources */,
 				03AC305C546FEDB7C2A7E1A8 /* b2FrictionJoint.cpp in Sources */,
+				20B3D0E1199D08FA00713FB7 /* ofxAudioUnitSpeechSynth.cpp in Sources */,
 				2A5D09413FD64EB3AF88EF02 /* b2GearJoint.cpp in Sources */,
 				14D76FD1B7F190398D120FA4 /* b2Joint.cpp in Sources */,
 				C1DDE2EB6202440187690701 /* b2MotorJoint.cpp in Sources */,
 				D2969DE2782BAE96A0C7ADC1 /* b2MouseJoint.cpp in Sources */,
+				20B3D0E0199D08FA00713FB7 /* ofxAudioUnitSampler.cpp in Sources */,
 				64F975DC016F17834FBB9F01 /* b2PrismaticJoint.cpp in Sources */,
 				9F9D49CFC30BA1589822E7AB /* b2PulleyJoint.cpp in Sources */,
 				A2E6B252D682A7FB048A1644 /* b2RevoluteJoint.cpp in Sources */,
+				20B3D0E2199D08FA00713FB7 /* ofxAudioUnitTap.cpp in Sources */,
 				9D0AA091FE805EB564CD05D0 /* b2RopeJoint.cpp in Sources */,
 				87C5C3DED336B7BB4A5D06D6 /* b2WeldJoint.cpp in Sources */,
 				684CFB2E4AC045640B3A61F8 /* b2WheelJoint.cpp in Sources */,
@@ -829,7 +996,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
@@ -840,7 +1009,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;

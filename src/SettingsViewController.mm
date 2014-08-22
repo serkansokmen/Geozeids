@@ -53,5 +53,23 @@
 {
     myApp->ripples.clear();
 }
+- (IBAction)tailLengthChanged:(UISlider *)sender
+{
+    myApp->tailLength = (int)[sender value];
+}
+- (IBAction)gravityChanged:(UISlider *)sender
+{
+    myApp->gravityMultiplier = [sender value];
+}
+
+- (IBAction)toggleColorize:(UISwitch *)sender
+{
+    myApp->bColorize = [sender isOn];
+}
+
+- (IBAction)forceChanged:(UISlider *)sender
+{
+    myApp->forceMultiplier = [sender value];
+}
 
 @end

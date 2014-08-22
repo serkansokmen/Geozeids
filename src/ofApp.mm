@@ -21,7 +21,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     ofSetCircleResolution(160);
     ofBackground(BACKGROUND_COLOR);
-    ofSetLogLevel(OF_LOG_ERROR);
+    ofSetLogLevel(OF_LOG_NOTICE);
     
     coreMotion.setupAttitude(CMAttitudeReferenceFrameXMagneticNorthZVertical);
     
@@ -33,11 +33,15 @@ void ofApp::setup(){
     box2d.registerGrabbing();
     box2d.setIterations(1, 1);
     
-    bRecordTouch = true;
+    gravityMultiplier = 0.f;
+    forceMultiplier = 10.f;
+    tailLength = 75;
+    bRecordTouch = false;
+    bColorize = true;
     
     // register the listener so that we get the events
-	ofAddListener(box2d.contactStartEvents, this, &ofApp::contactStart);
-	ofAddListener(box2d.contactEndEvents, this, &ofApp::contactEnd);
+//	ofAddListener(box2d.contactStartEvents, this, &ofApp::contactStart);
+//	ofAddListener(box2d.contactEndEvents, this, &ofApp::contactEnd);
     
     // Load Sounds
     rippleSound[0].loadSound("themes/pack_2/sounds/E1.wav");
@@ -65,12 +69,16 @@ void ofApp::update(){
     ofRemove(polyShapes, removeShapeOffScreen);
     
     ofVec2f gravity = ofVec2f(coreMotion.getGravity().x, -coreMotion.getGravity().y);
-    gravity *= 1.f;
+    gravity *= gravityMultiplier;
     box2d.setGravity(gravity);
     box2d.update();
     
     for (auto ripple : ripples) {
         ripple.get()->update();
+    }
+    
+    if (ripples.size() > MAX_OBJECTS) {
+        ripples.erase(ripples.begin());
     }
 }
 
@@ -78,14 +86,14 @@ void ofApp::update(){
 void ofApp::draw(){
     
     for (auto ripple : ripples) {
-        SoundData * data = (SoundData*)ripple.get()->getData();
+//        SoundData * data = (SoundData*)ripple.get()->getData();
         
-        if(data && data->bHit) {
-            ripple.get()->color = ofColor::greenYellow;
-        }
-        else {
-            ripple.get()->color = OBJECT_COLOR;
-        }
+//        if(data && data->bHit) {
+//            ripple.get()->color = ofColor::greenYellow;
+//        }
+//        else {
+//            ripple.get()->color = OBJECT_COLOR;
+//        }
         ripple.get()->draw();
     }
     
@@ -153,8 +161,9 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
             
             ofPtr<Ripple> ripple(new Ripple());
             ripple.get()->setPhysics(mass, bounciness, friction);
-            ripple.get()->setup(box2d.getWorld(), touchStart, touchDist);
-            ripple.get()->addForce(touchStart - touchEnd, touchDist * 200.8f);
+            ripple.get()->setup(box2d.getWorld(), touchStart, touchDist, tailLength);
+            ripple.get()->addForce(touchStart - touchEnd, touchDist * 12.8f);
+            ripple.get()->forceMultiplier = forceMultiplier;
             ripple.get()->touchId = touch.id;
             
             ripple.get()->setData(new SoundData());
@@ -162,7 +171,11 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
             sd->soundID = ofRandom(0, N_SOUNDS);
             sd->bHit	= false;
             
-            ripple.get()->color = ofColor(OBJECT_COLOR);
+            if (bColorize) {
+                ripple.get()->color = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
+            } else {
+                ripple.get()->color = ofColor(OBJECT_COLOR);
+            }
             ripples.push_back(ripple);
         }
     }

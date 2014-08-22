@@ -49,8 +49,12 @@ public:
     
     ofSoundPlayer   rippleSound[4];
     
+    ofPolyline      shape;
+    float           gravityMultiplier;
+    float           forceMultiplier;
+    int             tailLength;
+    
+    bool            bColorize;
     bool            bRecordTouch;
     bool            breakupIntoTriangles;
-    
-	ofPolyline      shape;
 };
