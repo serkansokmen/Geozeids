@@ -12,11 +12,9 @@
 
 #define     REPEAT_RES          2
 #define     MAX_OBJECTS         20
+#define     MIN_CIRCLE_RADIUS   20.f
 
 #define     BACKGROUND_COLOR    ofColor::black
 #define     OBJECT_COLOR        ofColor::white
-
-
-#define     N_SOUNDS            4
 
 #endif

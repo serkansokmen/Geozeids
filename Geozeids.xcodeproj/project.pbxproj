@@ -142,12 +142,10 @@
 		1D6058910D05DD3D006BFB54 /* Geozeids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geozeids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D96594EB6BCE7C4A6758E77 /* b2PolygonShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2PolygonShape.h; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/Shapes/b2PolygonShape.h; sourceTree = SOURCE_ROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		205B09A019A77E3F001109D5 /* RippleBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RippleBase.h; sourceTree = "<group>"; };
-		205B09A119A7812D001109D5 /* RippleRectangle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RippleRectangle.h; sourceTree = "<group>"; };
+		200E404219A8A28800A0A386 /* RipplePolygon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RipplePolygon.h; sourceTree = "<group>"; };
 		205C01CCE4351EE1038CED3A /* b2Rope.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2Rope.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Rope/b2Rope.cpp; sourceTree = SOURCE_ROOT; };
 		2070A6EB199AE5E20060882B /* RippleCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RippleCircle.h; sourceTree = "<group>"; };
 		2070A6EC199AE6480060882B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		2070A6ED199B7D130060882B /* SoundData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundData.h; sourceTree = "<group>"; };
 		2070A6F0199B82340060882B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		2070A6F1199B82340060882B /* SettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingsViewController.mm; sourceTree = "<group>"; };
 		2070A6F2199B82340060882B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -766,11 +764,9 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
-				205B09A019A77E3F001109D5 /* RippleBase.h */,
 				2070A6EB199AE5E20060882B /* RippleCircle.h */,
-				205B09A119A7812D001109D5 /* RippleRectangle.h */,
+				200E404219A8A28800A0A386 /* RipplePolygon.h */,
 				2070A6EC199AE6480060882B /* Constants.h */,
-				2070A6ED199B7D130060882B /* SoundData.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

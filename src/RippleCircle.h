@@ -9,8 +9,8 @@
 
 #include "ofMain.h"
 #include "ofxBox2dCircle.h"
-#include "RippleBase.h"
 #include "Constants.h"
+
 
 class RippleCircle : public ofxBox2dCircle {
     

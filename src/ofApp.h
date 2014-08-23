@@ -5,20 +5,18 @@
 #include "ofxBox2d.h"
 #include "ofxCoreMotion.h"
 #include "RippleCircle.h"
-#include "RippleRectangle.h"
+#include "RipplePolygon.h"
 #include "Constants.h"
-#include "SoundData.h"
 
 
 typedef enum : NSUInteger {
     RIPPLE_CIRCLE,
-    RIPPLE_ELLIPSE,
-    RIPPLE_RECTANGLE,
+    RIPPLE_POLYGON,
 } RippleType;
 
 
 class ofApp : public ofxiOSApp {
-	
+    
 public:
     void setup();
     void update();
@@ -53,9 +51,7 @@ public:
     ofVec2f         touchEnd;
     
     vector< ofPtr<RippleCircle> >       circleRipples;
-    vector< ofPtr<RippleRectangle> >    rectRipples;
-//    vector< ofPtr<RippleCircle> >       circleRipples;
-    vector< ofPtr<ofxBox2dPolygon> >    polyShapes;
+    vector< ofPtr<RipplePolygon> >      polyRipples;
     
     ofSoundPlayer   rippleSound[4];
     
@@ -67,7 +63,5 @@ public:
     RippleType      rippleType;
     
     bool            bColorize;
-    bool            bRecordTouch;
-    bool            breakupIntoTriangles;
     bool            bUseShader;
 };

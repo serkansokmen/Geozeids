@@ -37,17 +37,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)toggleShapeMode:(UISwitch *)sender
-{
-    myApp->bRecordTouch = [sender isOn];
-}
 - (IBAction)done:(id)sender
 {
     self.view.hidden = YES;
 }
 - (IBAction)clearPolys:(id)sender
 {
-    myApp->polyShapes.clear();
+    myApp->polyRipples.clear();
 }
 - (IBAction)clearRipples:(id)sender
 {
@@ -75,6 +71,16 @@
 - (IBAction)toggleUseShader:(UISwitch *)sender
 {
     myApp->bUseShader = [sender isOn];
+}
+
+- (IBAction)setShapeMode:(UISegmentedControl *)sender
+{
+    if ([sender selectedSegmentIndex] == 0) {
+        myApp->rippleType = RIPPLE_CIRCLE;
+    }
+    else if ([sender selectedSegmentIndex] == 1) {
+        myApp->rippleType = RIPPLE_POLYGON;
+    }
 }
 
 @end
