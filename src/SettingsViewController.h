@@ -22,5 +22,6 @@
 - (IBAction)gravityChanged:(UISlider *)sender;
 - (IBAction)toggleColorize:(UISwitch *)sender;
 - (IBAction)forceChanged:(UISlider *)sender;
+- (IBAction)toggleUseShader:(UISwitch *)sender;
 
 @end

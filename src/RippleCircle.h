@@ -14,11 +14,12 @@
 
 class RippleCircle : public ofxBox2dCircle {
     
-    vector<ofVec2f>     prevPositions;
-    ofVec2f forcePos;
-    ofVec2f field;
-    int     tailLength;
+    vector<ofVec2f> prevPositions;
+    ofVec2f         forcePos;
+    ofVec2f         field;
+    ofShader        shader;
     
+    int     tailLength;
     float   complexity = 56;    // wind complexity
     float   timeSpeed = .07;    // wind variation speed
     float   phase = TWO_PI;     // separate u-noise from v-noise
@@ -30,6 +31,8 @@ public:
         ofxBox2dCircle::setup(b2dworld, pts.x, pts.y, radius);
         tailLength = length;
         prevPositions.assign(length, pts);
+        
+        shader.load("shaders/vert.glsl", "shaders/frag.glsl");
     }
     
     void update(){
@@ -47,15 +50,24 @@ public:
         forcePos.x += ofLerp(-speed, speed, field.x);
         forcePos.y += ofLerp(-speed, speed, field.y);
         
-        ofLog() << "Position: " << ofxBox2dCircle::getPosition() << ", Force: " << forcePos << ", Time: " << t << endl;
         addAttractionPoint(forcePos, pow(getRadius(), 2) * ofRandom(forceMultiplier));
     };
     
     void draw(){
         
+        if (useShader) {
+            shader.begin();
+        }
+		
         int count = prevPositions.size();
         
         ofNoFill();
+        
+        if (useShader) {
+            shader.setUniform1f("timeValX", t * 0.1 );
+            shader.setUniform1f("timeValY", -t * 0.18 );
+            shader.setUniform2f("mouse", getPosition().x, getPosition().y);
+        }
         
         for (int i = 0; i < count; i+= REPEAT_RES) {
             
@@ -68,6 +80,10 @@ public:
         }
         
         ofFill();
+        
+        if (useShader) {
+            shader.end();
+        }
     };
     
     ofVec2f getField(ofVec2f position) {
@@ -81,4 +97,5 @@ public:
     ofColor color;
     float   forceMultiplier;
     int     touchId;
+    bool    useShader;
 };

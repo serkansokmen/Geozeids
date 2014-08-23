@@ -72,4 +72,9 @@
     myApp->forceMultiplier = [sender value];
 }
 
+- (IBAction)toggleUseShader:(UISwitch *)sender
+{
+    myApp->bUseShader = [sender isOn];
+}
+
 @end

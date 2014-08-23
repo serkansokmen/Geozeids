@@ -69,4 +69,5 @@ public:
     bool            bColorize;
     bool            bRecordTouch;
     bool            breakupIntoTriangles;
+    bool            bUseShader;
 };

@@ -38,6 +38,7 @@ void ofApp::setup(){
     tailLength = 75;
     bRecordTouch = false;
     bColorize = true;
+    bUseShader = false;
     rippleType = RIPPLE_CIRCLE;
     
     // register the listener so that we get the events
@@ -76,6 +77,8 @@ void ofApp::update(){
     box2d.update();
     
     for (auto ripple : circleRipples) {
+        ripple.get()->useShader = bUseShader;
+        ripple.get()->forceMultiplier = forceMultiplier;
         ripple.get()->update();
     }
     for (auto ripple : rectRipples) {
